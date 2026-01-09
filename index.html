@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Love You Shreeya 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: #fff;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* Floating hearts */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* Hero */
+.hero {
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 3rem;
+}
+
+.hero p {
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+
+/* Sections */
+.section {
+  padding: 60px 20px;
+}
+
+.section h2 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.card {
+  background: rgba(255,255,255,0.2);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(8px);
+}
+
+/* Love notes */
+.note {
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.note:hover {
+  transform: scale(1.05);
+}
+
+/* Button */
+button {
+  background: #ff4b5c;
+  border: none;
+  padding: 15px 30px;
+  color: white;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+button:hover {
+  background: #ff1e38;
+}
+
+/* Surprise text */
+#surprise {
+  display: none;
+  margin-top: 30px;
+  font-size: 1.5rem;
+  font-family: 'Pacifico', cursive;
+}
+
+/* Footer */
+footer {
+  padding: 30px;
+  font-size: 0.9rem;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+  <h1>I Love You, Shreeya 💖</h1>
+  <p>I may not say it enough… but I feel it every second.</p>
+</div>
+
+<div class="section">
+  <h2>Why I Love You</h2>
+  <div class="cards">
+    <div class="card">Your smile fixes my worst days 🌸</div>
+    <div class="card">You understand me like no one else 💫</div>
+    <div class="card">Life feels lighter with you ❤️</div>
+    <div class="card">You are my safe place 🫶</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Little Love Notes 💌 (Tap them)</h2>
+  <div class="cards">
+    <div class="card note" onclick="this.innerText='I love you more than I know how to say ❤️'">Tap Me</div>
+    <div class="card note" onclick="this.innerText='Every future I imagine has you in it 💍'">Tap Me</div>
+    <div class="card note" onclick="this.innerText='I choose you. Every single day 🌹'">Tap Me</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>A Small Promise</h2>
+  <p>I might forget words sometimes… but my love for you never fades.</p>
+  <button onclick="showSurprise()">Click for a Surprise 💖</button>
+  <div id="surprise">Shreeya, I love you endlessly ❤️</div>
+</div>
+
+<footer>
+  Made with love, courage, and a very sorry heart 💕
+</footer>
+
+<script>
+function showSurprise() {
+  document.getElementById("surprise").style.display = "block";
+}
+
+// Floating hearts generator
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 500);
+</script>
+
+</body>
+</html>

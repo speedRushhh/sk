@@ -2,174 +2,949 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>I Love You Shreeya 💖</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#ff4f81">
+<title>For Shreeya ❤️</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --pink:#ff4f81;
+    --hot:#ff174f;
+    --rose:#ff8fab;
+    --gold:#ffd166;
+}
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html {
+    scroll-behavior:smooth;
 }
 
 body {
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  color: #fff;
-  text-align: center;
-  overflow-x: hidden;
+    min-height:100vh;
+    overflow-x:hidden;
+    font-family:'Montserrat',sans-serif;
+    background:#180b13;
+    color:white;
 }
 
-/* Floating hearts */
+body::before {
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-5;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(255,79,129,.35),transparent 30%),
+        radial-gradient(circle at 80% 80%,rgba(255,209,102,.15),transparent 30%),
+        linear-gradient(145deg,#180b13,#3c1024 50%,#160912);
+}
+
+#hearts {
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:1;
+}
+
 .heart {
-  position: fixed;
-  bottom: -10px;
-  font-size: 20px;
-  animation: floatUp 6s linear infinite;
-  opacity: 0.7;
+    position:absolute;
+    bottom:-40px;
+    animation:floatHeart linear forwards;
+    opacity:0;
 }
 
-@keyframes floatUp {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(-100vh); opacity: 0; }
+@keyframes floatHeart {
+    0% {
+        transform:translateY(0) rotate(0deg) scale(.6);
+        opacity:0;
+    }
+    15% {opacity:.8;}
+    85% {opacity:.7;}
+    100% {
+        transform:translateY(-110vh) rotate(360deg) scale(1.4);
+        opacity:0;
+    }
 }
 
-/* Hero */
-.hero {
-  padding: 80px 20px;
+.screen {
+    min-height:100svh;
+    width:100%;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:28px 20px;
+    position:relative;
 }
 
-.hero h1 {
-  font-family: 'Pacifico', cursive;
-  font-size: 3rem;
+.screen.active {
+    display:flex;
+    animation:screenIn .7s ease;
 }
 
-.hero p {
-  margin-top: 20px;
-  font-size: 1.2rem;
+@keyframes screenIn {
+    from {
+        opacity:0;
+        transform:scale(.97);
+    }
+    to {
+        opacity:1;
+        transform:scale(1);
+    }
 }
 
-/* Sections */
-.section {
-  padding: 60px 20px;
+.container {
+    width:100%;
+    max-width:480px;
+    text-align:center;
+    position:relative;
+    z-index:3;
 }
 
-.section h2 {
-  font-family: 'Pacifico', cursive;
-  font-size: 2.2rem;
-  margin-bottom: 20px;
+.script {
+    font-family:'Dancing Script',cursive;
 }
 
-/* Cards */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  max-width: 900px;
-  margin: auto;
+.small {
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    opacity:.7;
 }
 
-.card {
-  background: rgba(255,255,255,0.2);
-  padding: 20px;
-  border-radius: 15px;
-  backdrop-filter: blur(8px);
+h1 {
+    font-size:clamp(44px,13vw,72px);
+    line-height:.95;
+    margin:15px 0;
 }
 
-/* Love notes */
-.note {
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-.note:hover {
-  transform: scale(1.05);
+h2 {
+    font-size:clamp(30px,9vw,48px);
+    line-height:1.05;
 }
 
-/* Button */
-button {
-  background: #ff4b5c;
-  border: none;
-  padding: 15px 30px;
-  color: white;
-  font-size: 1.1rem;
-  border-radius: 30px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-button:hover {
-  background: #ff1e38;
+p {
+    line-height:1.7;
 }
 
-/* Surprise text */
-#surprise {
-  display: none;
-  margin-top: 30px;
-  font-size: 1.5rem;
-  font-family: 'Pacifico', cursive;
+.btn {
+    border:0;
+    outline:none;
+    cursor:pointer;
+    color:white;
+    background:linear-gradient(135deg,#ff4778,#ff174f);
+    padding:16px 28px;
+    border-radius:999px;
+    font-family:inherit;
+    font-weight:700;
+    font-size:15px;
+    box-shadow:0 12px 35px rgba(255,47,104,.35);
+    transition:.2s;
+    margin-top:25px;
 }
 
-/* Footer */
-footer {
-  padding: 30px;
-  font-size: 0.9rem;
+.btn:active {
+    transform:scale(.94);
+}
+
+.big-heart {
+    width:130px;
+    height:130px;
+    margin:0 auto 20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:75px;
+    filter:drop-shadow(0 0 30px rgba(255,64,112,.7));
+    animation:heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%,100% {transform:scale(1);}
+    10% {transform:scale(1.15);}
+    20% {transform:scale(1);}
+    30% {transform:scale(1.12);}
+    40% {transform:scale(1);}
+}
+
+.opening-name {
+    color:#ff9db8;
+}
+
+.counter {
+    font-size:13px;
+    letter-spacing:2px;
+    opacity:.7;
+    margin-bottom:10px;
+}
+
+.progress {
+    width:100%;
+    height:5px;
+    background:rgba(255,255,255,.1);
+    border-radius:20px;
+    overflow:hidden;
+    margin:15px 0 30px;
+}
+
+.progress-bar {
+    height:100%;
+    width:4.35%;
+    background:linear-gradient(90deg,#ff4778,#ffd166);
+    transition:width .4s ease;
+}
+
+.reason-card {
+    min-height:300px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:35px 25px;
+    border-radius:30px;
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.11),
+        rgba(255,255,255,.04)
+    );
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 25px 70px rgba(0,0,0,.3);
+    backdrop-filter:blur(15px);
+}
+
+.number {
+    font-size:70px;
+    font-weight:800;
+    line-height:1;
+    background:linear-gradient(135deg,#fff,#ff8fab);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.reason {
+    font-family:'Dancing Script',cursive;
+    font-size:32px;
+    line-height:1.25;
+    margin-top:20px;
+}
+
+.tap-hint {
+    margin-top:30px;
+    font-size:12px;
+    opacity:.55;
+}
+
+/* PHOTO */
+
+.photo-card {
+    margin-top:25px;
+    padding:10px;
+    border-radius:28px;
+    background:linear-gradient(135deg,#ff7096,#ffd166);
+    box-shadow:0 25px 70px rgba(255,79,129,.2);
+}
+
+.photo-placeholder {
+    height:340px;
+    border-radius:20px;
+    overflow:hidden;
+    position:relative;
+    background:#351525;
+}
+
+.birthday-photo {
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.photo-placeholder::after {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to bottom,
+        transparent 40%,
+        rgba(20,5,12,.9) 100%
+    );
+    pointer-events:none;
+}
+
+.photo-caption {
+    position:absolute;
+    bottom:25px;
+    left:20px;
+    right:20px;
+    z-index:2;
+    text-align:center;
+    font-family:'Dancing Script',cursive;
+    font-size:28px;
+    color:white;
+}
+
+/* LETTER */
+
+.letter {
+    text-align:left;
+    margin-top:25px;
+    padding:28px 24px;
+    border-radius:25px;
+    background:#fff8f5;
+    color:#421a29;
+    box-shadow:0 25px 80px rgba(0,0,0,.35);
+    position:relative;
+}
+
+.letter::before {
+    content:"♥";
+    position:absolute;
+    top:-16px;
+    right:22px;
+    color:#ff4778;
+    font-size:35px;
+}
+
+.letter p {
+    font-family:'Dancing Script',cursive;
+    font-size:23px;
+    line-height:1.55;
+}
+
+.signature {
+    text-align:right;
+    margin-top:20px;
+    font-size:25px!important;
+}
+
+/* CAKE */
+
+.cake-area {
+    margin:35px auto;
+    height:250px;
+    position:relative;
+}
+
+.cake {
+    position:absolute;
+    left:50%;
+    bottom:20px;
+    transform:translateX(-50%);
+    width:230px;
+}
+
+.cake-top {
+    height:55px;
+    background:#ff8fab;
+    border-radius:50%;
+    position:relative;
+    z-index:2;
+}
+
+.cake-body {
+    height:100px;
+    margin-top:-25px;
+    background:linear-gradient(90deg,#ff6f91,#ff4778,#ff6f91);
+    border-radius:0 0 20px 20px;
+    position:relative;
+}
+
+.cake-body::after {
+    content:"";
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    right:20px;
+    height:5px;
+    background:rgba(255,255,255,.5);
+    box-shadow:0 18px rgba(255,255,255,.4);
+}
+
+.candle {
+    position:absolute;
+    width:12px;
+    height:55px;
+    background:repeating-linear-gradient(
+        45deg,
+        #fff,
+        #fff 7px,
+        #ff4778 7px,
+        #ff4778 13px
+    );
+    top:-50px;
+    border-radius:5px;
+}
+
+.candle.one {left:80px;}
+.candle.two {left:109px;}
+.candle.three {left:138px;}
+
+.flame {
+    position:absolute;
+    width:18px;
+    height:25px;
+    background:#ffd166;
+    border-radius:50% 50% 50% 0;
+    transform:rotate(-45deg);
+    top:-28px;
+    left:-3px;
+    animation:flame .5s infinite alternate;
+    box-shadow:0 0 20px #ffd166;
+}
+
+@keyframes flame {
+    from {transform:rotate(-45deg) scale(.9);}
+    to {transform:rotate(-45deg) scale(1.1);}
+}
+
+/* FINAL */
+
+.final-heart {
+    font-size:110px;
+    animation:heartbeat 1.5s infinite;
+    filter:drop-shadow(0 0 35px rgba(255,79,129,.7));
+}
+
+.final-message {
+    font-family:'Dancing Script',cursive;
+    font-size:38px;
+    line-height:1.15;
+    margin:20px 0;
+}
+
+.forever {
+    color:#ff9db8;
+    font-weight:700;
+}
+
+/* CONFETTI */
+
+.confetti {
+    position:fixed;
+    width:8px;
+    height:14px;
+    top:-20px;
+    z-index:100;
+    animation:confettiFall 3s linear forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
+}
+
+@media(max-width:380px) {
+    .reason-card {
+        min-height:280px;
+        padding:25px 18px;
+    }
+
+    .reason {
+        font-size:28px;
+    }
+
+    .letter p {
+        font-size:21px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
-  <h1>I Love You, Shreeya 💖</h1>
-  <p>I may not say it enough… but I feel it every second.</p>
-</div>
+<div id="hearts"></div>
 
-<div class="section">
-  <h2>Why I Love You</h2>
-  <div class="cards">
-    <div class="card">Your smile fixes my worst days 🌸</div>
-    <div class="card">You understand me like no one else 💫</div>
-    <div class="card">Life feels lighter with you ❤️</div>
-    <div class="card">You are my safe place 🫶</div>
-  </div>
-</div>
+<!-- OPENING -->
 
-<div class="section">
-  <h2>Little Love Notes 💌 (Tap them)</h2>
-  <div class="cards">
-    <div class="card note" onclick="this.innerText='I love you more than I know how to say ❤️'">Tap Me</div>
-    <div class="card note" onclick="this.innerText='Every future I imagine has you in it 💍'">Tap Me</div>
-    <div class="card note" onclick="this.innerText='I choose you. Every single day 🌹'">Tap Me</div>
-  </div>
-</div>
+<section class="screen active" id="screen1">
+    <div class="container">
 
-<div class="section">
-  <h2>A Small Promise</h2>
-  <p>I might forget words sometimes… but my love for you never fades.</p>
-  <button onclick="showSurprise()">Click for a Surprise 💖</button>
-  <div id="surprise">Shreeya, I love you endlessly ❤️</div>
-</div>
+        <div class="big-heart">❤️</div>
 
-<footer>
-  Made with love, courage, and a very sorry heart 💕
-</footer>
+        <div class="small">A little something for</div>
+
+        <h1 class="script opening-name">Shreeya</h1>
+
+        <p style="opacity:.75;max-width:330px;margin:auto;">
+            There are 8 billion people in this world...
+            and somehow, I got lucky enough to find you.
+        </p>
+
+        <button class="btn" onclick="goTo(2)">
+            Open Your Surprise 💌
+        </button>
+
+    </div>
+</section>
+
+<!-- 23 REASONS -->
+
+<section class="screen" id="screen2">
+    <div class="container">
+
+        <div class="small">23 little reasons</div>
+
+        <h2 class="script" style="margin-top:8px;">
+            Why I Love You
+        </h2>
+
+        <div class="counter" id="counter">1 / 23</div>
+
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="reason-card" id="reasonCard">
+
+            <div class="number" id="reasonNumber">1</div>
+
+            <div class="reason" id="reasonText">
+                Because your smile can make even my worst day better.
+            </div>
+
+            <div class="tap-hint">
+                Tap the button for the next one ❤️
+            </div>
+
+        </div>
+
+        <button class="btn" id="nextReason" onclick="nextReason()">
+            Next Love Note 💗
+        </button>
+
+    </div>
+</section>
+
+<!-- PHOTO -->
+
+<section class="screen" id="screen3">
+    <div class="container">
+
+        <div class="small">One of my favorite things</div>
+
+        <h2 class="script" style="margin-top:8px;">
+            Is You. Obviously. ❤️
+        </h2>
+
+        <div class="photo-card">
+
+            <div class="photo-placeholder">
+
+                <img
+                    src="photo.jpg"
+                    alt="Shreeya ❤️"
+                    class="birthday-photo"
+                >
+
+                <div class="photo-caption">
+                    My favorite view in the whole world. ❤️
+                </div>
+
+            </div>
+
+        </div>
+
+        <p style="margin-top:20px;opacity:.75;">
+            And yes... I could stare at this forever.
+        </p>
+
+        <button class="btn" onclick="goTo(4)">
+            There's More... 👀
+        </button>
+
+    </div>
+</section>
+
+<!-- LETTER -->
+
+<section class="screen" id="screen4">
+    <div class="container">
+
+        <div class="small">A letter I wanted you to have</div>
+
+        <h2 class="script" style="margin-top:8px;">
+            For You 💌
+        </h2>
+
+        <div class="letter">
+
+            <p>My love,</p>
+
+            <p style="margin-top:15px;">
+                Today you turn 23, and I just want you to know
+                how incredibly special you are to me.
+            </p>
+
+            <p style="margin-top:15px;">
+                You have this beautiful way of making ordinary
+                moments feel like memories I want to keep forever.
+                Your laugh, your smile, your little habits,
+                the way you talk, the way you care...
+                somehow, I love all of it.
+            </p>
+
+            <p style="margin-top:15px;">
+                I don't know what the future has planned for us,
+                but I know one thing:
+                I want to keep making you smile.
+                I want to keep annoying you.
+                I want to keep making memories with you.
+            </p>
+
+            <p style="margin-top:15px;">
+                And on your 23rd birthday, I hope you remember
+                just how loved you are.
+            </p>
+
+            <p style="margin-top:15px;">
+                Happy Birthday, beautiful. ❤️
+            </p>
+
+            <p class="signature">
+                Forever yours,<br>
+                Karan ❤️
+            </p>
+
+        </div>
+
+        <button class="btn" onclick="goTo(5)">
+            One Last Surprise 🎂
+        </button>
+
+    </div>
+</section>
+
+<!-- CAKE -->
+
+<section class="screen" id="screen5">
+    <div class="container">
+
+        <div class="small">Make a wish...</div>
+
+        <h2 class="script">
+            23 Looks Beautiful On You ✨
+        </h2>
+
+        <div class="cake-area">
+
+            <div class="cake">
+
+                <div class="cake-top">
+
+                    <div class="candle one">
+                        <div class="flame"></div>
+                    </div>
+
+                    <div class="candle two">
+                        <div class="flame"></div>
+                    </div>
+
+                    <div class="candle three">
+                        <div class="flame"></div>
+                    </div>
+
+                </div>
+
+                <div class="cake-body"></div>
+
+            </div>
+
+        </div>
+
+        <p style="font-size:15px;opacity:.8;">
+            Close your eyes for a second...
+        </p>
+
+        <p class="script" style="font-size:30px;margin-top:12px;">
+            Make your biggest wish. 🌙
+        </p>
+
+        <button class="btn" onclick="finalSurprise()">
+            Blow The Candles 🕯️
+        </button>
+
+    </div>
+</section>
+
+<!-- FINAL -->
+
+<section class="screen" id="screen6">
+    <div class="container">
+
+        <div class="final-heart">❤️</div>
+
+        <div class="small" style="margin-top:15px;">
+            Happy 23rd Birthday
+        </div>
+
+        <h1 class="script">
+            Shreeya
+        </h1>
+
+        <div class="final-message">
+            Out of all the places in the world,
+            <br>
+            my favorite place is
+            <br>
+            <span class="forever">beside you.</span>
+        </div>
+
+        <p style="opacity:.7;max-width:350px;margin:20px auto;">
+            Here's to 23 years of you...
+            and hopefully many, many more memories together. 🥂
+        </p>
+
+        <div style="font-size:26px;margin-top:25px;">
+            I love you. ❤️
+        </div>
+
+        <div
+            class="script"
+            style="font-size:25px;margin-top:12px;color:#ff9db8;"
+        >
+            — Karan
+        </div>
+
+    </div>
+</section>
 
 <script>
-function showSurprise() {
-  document.getElementById("surprise").style.display = "block";
+
+const reasons = [
+
+    "Because your smile can make even my worst day better.",
+    "Because you somehow make everything more fun.",
+    "Because talking to you never gets boring.",
+    "Because your laugh is one of my favorite sounds.",
+    "Because you make me feel understood.",
+    "Because you have the most beautiful heart.",
+    "Because you believe in me even when I doubt myself.",
+    "Because you can turn an ordinary day into a memory.",
+    "Because you're effortlessly beautiful.",
+    "Because you're my favorite person to annoy. 😌",
+    "Because you make me want to become a better version of myself.",
+    "Because I love the little things you do without realizing it.",
+    "Because your hugs feel like home.",
+    "Because I can be completely myself around you.",
+    "Because you make my world feel a little brighter.",
+    "Because you make me laugh when I don't feel like laughing.",
+    "Because you're strong, even when you don't realize it.",
+    "Because every memory with you becomes one of my favorites.",
+    "Because you make love feel easy.",
+    "Because somehow, I still get butterflies around you.",
+    "Because you are wonderfully, completely YOU.",
+    "Because I would choose you again.",
+    "And because after all these reasons... I still haven't found enough words to explain how much I love you. ❤️"
+
+];
+
+let currentReason = 0;
+
+function goTo(screenNumber) {
+
+    document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
+    });
+
+    const next = document.getElementById("screen" + screenNumber);
+
+    if (next) {
+        next.classList.add("active");
+        window.scrollTo(0,0);
+    }
+
+    if (screenNumber === 2) {
+        currentReason = 0;
+        updateReason();
+    }
 }
 
-// Floating hearts generator
-setInterval(() => {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerText = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = Math.random() * 20 + 15 + "px";
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 6000);
-}, 500);
+function nextReason() {
+
+    if (currentReason < 22) {
+
+        currentReason++;
+        updateReason();
+        createMiniBurst();
+
+    } else {
+
+        createConfetti();
+
+        setTimeout(() => {
+            goTo(3);
+        },700);
+    }
+}
+
+function updateReason() {
+
+    const number = currentReason + 1;
+
+    document.getElementById("reasonNumber").textContent = number;
+
+    document.getElementById("reasonText").textContent =
+        reasons[currentReason];
+
+    document.getElementById("counter").textContent =
+        number + " / 23";
+
+    document.getElementById("progressBar").style.width =
+        ((number / 23) * 100) + "%";
+
+    const card = document.getElementById("reasonCard");
+
+    card.style.animation = "none";
+
+    void card.offsetWidth;
+
+    card.style.animation = "screenIn .45s ease";
+
+    if (number === 23) {
+        document.getElementById("nextReason").textContent =
+            "Okay... One More Surprise ❤️";
+    }
+}
+
+const heartSymbols = [
+    "❤️","💕","💗","💖","💘","💝","♥️"
+];
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.textContent =
+        heartSymbols[
+            Math.floor(Math.random() * heartSymbols.length)
+        ];
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (14 + Math.random() * 20) + "px";
+
+    const duration =
+        5 + Math.random() * 7;
+
+    heart.style.animationDuration =
+        duration + "s";
+
+    document.getElementById("hearts").appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    },duration * 1000);
+}
+
+setInterval(createHeart,650);
+
+function createMiniBurst() {
+
+    for (let i = 0; i < 8; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.textContent = "❤️";
+
+        heart.style.position = "fixed";
+        heart.style.left = "50%";
+        heart.style.top = "50%";
+        heart.style.zIndex = "200";
+        heart.style.pointerEvents = "none";
+        heart.style.fontSize = "18px";
+
+        document.body.appendChild(heart);
+
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 70 + Math.random() * 100;
+
+        const x = Math.cos(angle) * distance;
+        const y = Math.sin(angle) * distance;
+
+        heart.animate(
+            [
+                {
+                    transform:"translate(-50%,-50%) scale(.5)",
+                    opacity:1
+                },
+                {
+                    transform:
+                        `translate(calc(-50% + ${x}px),calc(-50% + ${y}px)) scale(1.3)`,
+                    opacity:0
+                }
+            ],
+            {
+                duration:700,
+                easing:"ease-out"
+            }
+        );
+
+        setTimeout(() => heart.remove(),750);
+    }
+}
+
+function createConfetti() {
+
+    for (let i = 0; i < 100; i++) {
+
+        const piece = document.createElement("div");
+
+        piece.className = "confetti";
+
+        piece.style.left =
+            Math.random() * 100 + "vw";
+
+        piece.style.animationDelay =
+            Math.random() * 1.5 + "s";
+
+        piece.style.transform =
+            `rotate(${Math.random() * 360}deg)`;
+
+        piece.style.background = [
+            "#ff4778",
+            "#ffd166",
+            "#ff8fab",
+            "#ffffff",
+            "#b76cff"
+        ][Math.floor(Math.random() * 5)];
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => piece.remove(),4500);
+    }
+}
+
+function finalSurprise() {
+
+    createConfetti();
+
+    for (let i = 0; i < 30; i++) {
+        setTimeout(createHeart,i * 40);
+    }
+
+    setTimeout(() => {
+        goTo(6);
+    },900);
+}
+
+for (let i = 0; i < 10; i++) {
+    setTimeout(createHeart,i * 300);
+}
+
 </script>
 
 </body>
